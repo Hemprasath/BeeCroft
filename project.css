@@ -1,0 +1,483 @@
+  :root {
+
+  --sidebar-w: 270px;
+  --bg: #212529;
+  --submenu-bg: #000;
+  --hover: #5fa9ae;
+  --menu-hover: #5fa9ae;
+  --text: #fff;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  min-height: 100vh;    
+  overflow-x: hidden;   
+}
+
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--bg);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -270px;
+    height: 100vh;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding-top: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .sidebar.open {
+
+    left: 0;
+
+  }
+
+  .sidebar .header {
+
+    text-align: center;
+    padding: 10px;
+    background: var(--bg);
+
+  }
+
+  .sidebar .header img {
+
+    width: 30%;
+
+  }
+
+  .sidebar::-webkit-scrollbar {
+
+    width: 6px;
+
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+
+  }
+
+  .menu-toggle {
+
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--bg);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1100;
+    font-size: 18px;
+
+  }
+
+  main,
+
+  main#content {
+
+    margin-left: var(--sidebar-w);
+    padding: 20px;
+     transition: margin-left 0.3s ease;
+
+  }
+
+  .sidebar.closed+main,
+
+  .sidebar:not(.open)+main {
+
+    margin-left: 0;
+
+  }
+
+   .menu-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 20px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    transition: background 0.2s;
+
+  }
+
+  .menu-item:hover {
+
+    background: rgba(255, 255, 255, 0.04);
+
+  }
+
+  .menu-item-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+
+  }
+
+  .menu-item i {
+
+    font-size: 18px;
+
+    width: 20px;
+
+    text-align: center;
+
+    flex: 0 0 20px;
+
+  }
+
+  .menu-item .label {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+  }
+
+  .menu-item.active .label,
+
+  .submenu li.active {
+
+    color: #fff !important;
+
+  }
+
+  .arrow {
+
+    font-size: 12px;
+
+    transition: transform 0.25s;
+
+  }
+
+  .menu-item.open .arrow {
+
+    transform: rotate(90deg);
+
+  }
+  
+  .submenu {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+    background: var(--submenu-bg);
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.25s ease;
+
+    width: 100%;
+
+    text-align: left;
+
+  }
+
+  .submenu.show {
+
+    max-height: 500px;
+
+  }
+
+  .submenu li {
+
+    padding: 10px 20px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: background 0.15s;
+
+    text-align: left;
+
+    margin: 5px 0;
+
+  }
+
+  .submenu li:hover {
+
+    background: var(--hover);
+    margin: 5px 0;
+  }
+
+  .submenu li.active {
+
+    background: var(--hover);
+
+    color: white !important;
+
+  }
+
+ 
+.logout-overlay {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2000;
+
+  }
+
+  .logout-popup {
+
+    background: #fff;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    width: 280px;
+
+  }
+
+  .logout-popup p {
+
+    margin-bottom: 15px;
+
+    font-size: 16px;
+
+    color: #333;
+
+  }
+
+  .logout-popup button {
+
+    padding: 8px 15px;
+
+    margin: 5px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+  }
+
+  .logout-popup .btn-yes {
+
+    background-color: green;
+
+    color: white;
+
+  }
+
+  .logout-popup .btn-yes:hover {
+
+    background-color: #5a6268;
+
+  }
+
+  .logout-popup .btn-no {
+
+    background-color: red;
+
+    color: white;
+  }
+
+  .logout-popup .btn-no:hover {
+
+    background-color: #5a6268;
+
+  }
+
+
+
+
+  /* Media Queries */
+
+  @media (max-width: 768px) {
+
+    .sidebar {
+
+      width: var(--sidebar-w);
+      background: var(--bg);
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+      padding-top: 20px;
+
+    }
+
+    .sidebar.open {
+
+      transform: translateX(0);
+
+    }
+
+    main {
+
+      margin-left: 0 !important;
+
+    }
+
+  }
+
+  @media (min-width: 992px) {
+
+    .menu-toggle {
+
+      display: none;
+
+    }
+
+  }
+
+  @media(max-width: 768px) {
+    #content {
+      padding-left: 60px;
+      padding-top: 20px;
+    }
+
+    #content h1 {
+      margin-left: 0;
+    }
+  }
+
+  .med-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+  .modal-body img {
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+
+
+  #content.with-bg {
+  position: relative;
+  z-index: 1; 
+}
+
+#content.with-bg::before {
+  content: "";
+  background-image: url("BeeCroft - Logo (2).png");
+  background-repeat: no-repeat;
+  background-position: 75%;
+  background-size: 60%;
+  background-attachment: fixed; 
+  opacity: 0.08;
+  position: fixed;           
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
+/* Wrap only the table, not the whole DataTable */
+.datatable-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Prevent wrapping */
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+/* Optional: Adjust control spacing if needed */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  padding: 0.5rem;
+}
+
+
+
